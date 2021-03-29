@@ -7,21 +7,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 <h2>입력정보</h2>
-        <section>
-            <article>
-                <table border="1">
-                    <tr>
-                        <th>이름</th>
-                        <td><input type="text" name="name"></td>
-                    </tr>
-                    <tr>
-                    <th>성별</th>
-                    <td>
-                    </tr>
-                </table>
-            </article>
-        </section>
-    </form>
+    <%
+		String name = request.getParameter("name");
+		String sex = request.getParameter("sex");
+		String year = request.getParameter("year");
+        String[] subject = request.getParameterValues("subject");
+        String[] hobby = request.getParameterValues("hobby");
+	%>
+
+    <h2>이름:<%=name %></h2>
+	
+    <h2>성별:<%=sex %></h2>
+	
+    <h2>학년:<%=year %></h2>
+    
+    <h2>관심:
+    <%  
+    for(int i=0; i<subject.length; i++) {
+    String checkSubject = subject[i]; %>
+    <%=checkSubject %>/
+    <%} %>
+	
+	<h2>취미:
+    <%  
+    for(int i=0; i<hobby.length; i++) {
+    String selectHobby = hobby[i]; %>
+    <%=selectHobby %>/
+    <%} %>
 </body>
 </html>
